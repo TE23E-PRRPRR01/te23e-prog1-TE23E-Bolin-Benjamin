@@ -10,14 +10,14 @@ string antalText = Console.ReadLine();
 int antal = 0;
 while (true)
 {
-    bool success = int.TryParse(antalText, out antal);
+    bool success = int.TryParse(antalText, out antal); //Bugg kolla värde mellan 3-5
     if (success)
     {
         break;
     }
     else
     {
-        Console.WriteLine("Fel! Var gof att mata in ett heltal.");
+        Console.WriteLine("Fel! Var god att mata in ett heltal."); //Bugg om antal igen
     }
 }
 
@@ -42,7 +42,7 @@ Välj ett alternativ:
         //Lägg till filmer i listan
         for (int i = 0; i < antal; i++)
         {
-            Console.Write("Ange en film att lägga till: ");
+            Console.Write($"Ange film nummer {i+1} att lägga till: ");
             string film = Console.ReadLine();
             listafilmer.Add(film);
         }
@@ -68,7 +68,6 @@ Välj ett alternativ:
             if (filmnamn.StartsWith(bokstav))
             {
                 Console.WriteLine(filmnamn);
-
             }
         }
     }
