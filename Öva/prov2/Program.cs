@@ -5,19 +5,32 @@ Console.WriteLine("Filmregister");
 List<string> listafilmer = [];
 
 //Be användaren ange ett antal
-Console.Write("Ange antal filmer per sida (3-5): ");
-string antalText = Console.ReadLine();
+
 int antal = 0;
 while (true)
 {
-    bool success = int.TryParse(antalText, out antal); //Bugg kolla värde mellan 3-5
+    Console.Write("Ange antal filmer per sida (3-5): ");
+    string antalText = Console.ReadLine();
+
+    bool success = int.TryParse(antalText, out antal); 
     if (success)
     {
-        break;
+        if (antal < 3)
+        {
+            Console.WriteLine("Fel! Var god att mata in ett heltal mellan (3-5). "); 
+        }
+        else if (antal > 5)
+        {
+            Console.WriteLine("Fel! Var god att mata in ett heltal mellan (3-5). ");   
+        }
+        else
+        {
+            break;
+        }
     }
     else
     {
-        Console.WriteLine("Fel! Var god att mata in ett heltal."); //Bugg om antal igen
+        Console.WriteLine("Fel! Var god att mata in ett heltal."); 
     }
 }
 
@@ -42,7 +55,7 @@ Välj ett alternativ:
         //Lägg till filmer i listan
         for (int i = 0; i < antal; i++)
         {
-            Console.Write($"Ange film nummer {i+1} att lägga till: ");
+            Console.Write($"Ange film nummer {i + 1} att lägga till: ");
             string film = Console.ReadLine();
             listafilmer.Add(film);
         }
